@@ -86,7 +86,3 @@ def lista_matches(id_pessoa):
     #         if verifica_match(id_pessoa, id_pessoa2):
     #             listaMatches[id_pessoa].append(id_pessoa2)
     # return listaMatches
-
-#def match_compativel()
-
-#def match_incompativel()
