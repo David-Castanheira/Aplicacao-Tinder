@@ -10,6 +10,8 @@ database['interesses'] = {
 database['PESSOA'] = [] #esse voce só faz se quiser guardar nessa lista os dicionários das pessoas
 
 #em todo esse codigo que estou compartilhando, as variaveis interessado, alvo de interesse, pessoa, pessoa1 e pessoa2 sao sempre IDs de pessoas
+class  IncompatibleError(Exception):
+    pass
 
 class NotFoundError(Exception):
     pass
@@ -36,9 +38,16 @@ def reseta():
     database['interesses'] = {}
 
 def adiciona_interesse(id_interessado, id_alvo_de_interesse):
-    localiza_pessoa(id_interessado)
-    localiza_pessoa(id_alvo_de_interesse)
-    database['interesses'][id_interessado].append(id_alvo_de_interesse)
+    pessoa1 = localiza_pessoa(id_interessado)
+    pessoa2 = localiza_pessoa(id_alvo_de_interesse)
+    
+    if 'buscando' in pessoa1:
+        if  pessoa2['sexo'] in pessoa1['buscando'] :
+            database['interesses'][id_interessado].append(id_alvo_de_interesse)
+        else:
+            raise IncompatibleError
+    else:
+        database['interesses'][id_interessado].append(id_alvo_de_interesse)
 
     # if id_alvo_de_interesse not in database['interesses'][id_interessado]:
     #     database['interesses'][id_interessado].append(id_alvo_de_interesse)
