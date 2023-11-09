@@ -1,5 +1,5 @@
 import unittest
-import estrutura_interesses as i
+import estrutura_interesses_sql_iniciada as i
 
 '''
 p1: Controle de pessoas.
@@ -130,7 +130,7 @@ class TestStringMethods(unittest.TestCase):
 
     def test_p1_00_pessoas_retorna_lista(self):
         res = i.todas_as_pessoas()
-        self.assertEqual(type(res),type([]))
+        self.assertEqual(     type(res)    ,     type([])     )
 
 
     def test_p1_01_adiciona_pessoas(self):
